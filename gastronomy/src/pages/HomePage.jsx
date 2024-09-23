@@ -1,25 +1,20 @@
 import React from 'react';
 import { Container, Navbar, Nav, Row, Col, Card, Button } from 'react-bootstrap';
-import StarRating from './StarRating';
 import { Cart, Facebook, Instagram, Twitter, Tiktok, Whatsapp } from 'react-bootstrap-icons';
-import logo_gg from './media/logo_gg.png'
-import nacatamal1 from './media/nacatamal1.png'
-import vigoron from './media/vigoron.jpg'
-import carne_asada from './media/carne_asada.jpeg'
-import sopa_mondongo from './media/sopa_mondongo.jpg'
+import images from '../assets/images_index';
 
-function HomePage() {
+export function Home() {
   return (
     <div className="d-flex flex-column min-vh-100">
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="#home">
             <img
-              src={logo_gg}
+              src={images.logo}
               width="100"
               height="100"
               className="d-inline-block align-top me-2"
-              alt="GastroShop Logo"
+              alt="GPS Gastronomy Logo"
             />
             GPS Gastronomy
           </Navbar.Brand>
@@ -52,7 +47,7 @@ function HomePage() {
               <Card>
                 <Card.Img 
                   variant="top" 
-                  src={nacatamal1}
+                  src={images.nacatamal}
                   alt="nacatamal"
                 />
                 <Card.Body>
@@ -60,7 +55,6 @@ function HomePage() {
                   <Card.Text>
                     C$ 60.00
                   </Card.Text>
-                  <StarRating rating={4.5} />
                   <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
                 </Card.Body>
               </Card>
@@ -69,7 +63,7 @@ function HomePage() {
               <Card>
                 <Card.Img 
                   variant="top" 
-                  src={vigoron}
+                  src={images.bigoron}
                   alt="vigoron"
                 />
                 <Card.Body>
@@ -77,7 +71,6 @@ function HomePage() {
                   <Card.Text>
                     C$ 150. 00
                   </Card.Text>
-                  <StarRating rating={4.8} />
                   <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
                 </Card.Body>
               </Card>
@@ -86,7 +79,7 @@ function HomePage() {
               <Card>
                 <Card.Img 
                   variant="top" 
-                  src={carne_asada}
+                  src={images.carne_asada}
                   alt="carne asada"
                 />
                 <Card.Body>
@@ -94,7 +87,6 @@ function HomePage() {
                   <Card.Text>
                     C$ 200.00
                   </Card.Text>
-                  <StarRating rating={4.2} />
                   <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
                 </Card.Body>
               </Card>
@@ -103,7 +95,7 @@ function HomePage() {
               <Card>
                 <Card.Img 
                   variant="top" 
-                  src={sopa_mondongo}
+                  src={images.mondongo}
                   alt="sopa de mondongo"
                 />
                 <Card.Body>
@@ -111,7 +103,6 @@ function HomePage() {
                   <Card.Text>
                     C$ 200. 00
                   </Card.Text>
-                  <StarRating rating={4.7} />
                   <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
                 </Card.Body>
               </Card>
@@ -123,7 +114,7 @@ function HomePage() {
               <Card>
                 <Card.Img 
                   variant="top" 
-                  src={nacatamal1}
+                  src={images.nacatamal}
                   alt="nacatamal"
                 />
                 <Card.Body>
@@ -131,7 +122,6 @@ function HomePage() {
                   <Card.Text>
                     C$ 60.00
                   </Card.Text>
-                  <StarRating rating={4.5} />
                   <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
                 </Card.Body>
               </Card>
@@ -140,7 +130,7 @@ function HomePage() {
               <Card>
                 <Card.Img 
                   variant="top" 
-                  src={vigoron}
+                  src={images.bigoron}
                   alt="vigoron"
                 />
                 <Card.Body>
@@ -148,7 +138,6 @@ function HomePage() {
                   <Card.Text>
                     C$ 150. 00
                   </Card.Text>
-                  <StarRating rating={4.8} />
                   <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
                 </Card.Body>
               </Card>
@@ -157,7 +146,7 @@ function HomePage() {
               <Card>
                 <Card.Img 
                   variant="top" 
-                  src={carne_asada}
+                  src={images.carne_asada}
                   alt="carne asada"
                 />
                 <Card.Body>
@@ -165,7 +154,6 @@ function HomePage() {
                   <Card.Text>
                     C$ 200.00
                   </Card.Text>
-                  <StarRating rating={4.2} />
                   <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
                 </Card.Body>
               </Card>
@@ -174,7 +162,7 @@ function HomePage() {
               <Card>
                 <Card.Img 
                   variant="top" 
-                  src={sopa_mondongo}
+                  src={images.mondongo}
                   alt="sopa de mondongo"
                 />
                 <Card.Body>
@@ -182,7 +170,6 @@ function HomePage() {
                   <Card.Text>
                     C$ 200. 00
                   </Card.Text>
-                  <StarRating rating={4.7} />
                   <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
                 </Card.Body>
               </Card>
@@ -194,7 +181,7 @@ function HomePage() {
               <Card>
                 <Card.Img 
                   variant="top" 
-                  src={nacatamal1}
+                  src={images.nacatamal}
                   alt="nacatamal"
                 />
                 <Card.Body>
@@ -202,7 +189,6 @@ function HomePage() {
                   <Card.Text>
                     C$ 60.00
                   </Card.Text>
-                  <StarRating rating={4.5} />
                   <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
                 </Card.Body>
               </Card>
@@ -211,7 +197,7 @@ function HomePage() {
               <Card>
                 <Card.Img 
                   variant="top" 
-                  src={vigoron}
+                  src={images.bigoron}
                   alt="vigoron"
                 />
                 <Card.Body>
@@ -219,7 +205,6 @@ function HomePage() {
                   <Card.Text>
                     C$ 150. 00
                   </Card.Text>
-                  <StarRating rating={4.8} />
                   <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
                 </Card.Body>
               </Card>
@@ -228,7 +213,7 @@ function HomePage() {
               <Card>
                 <Card.Img 
                   variant="top" 
-                  src={carne_asada}
+                  src={images.carne_asada}
                   alt="carne asada"
                 />
                 <Card.Body>
@@ -236,7 +221,6 @@ function HomePage() {
                   <Card.Text>
                     C$ 200.00
                   </Card.Text>
-                  <StarRating rating={4.2} />
                   <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
                 </Card.Body>
               </Card>
@@ -245,7 +229,7 @@ function HomePage() {
               <Card>
                 <Card.Img 
                   variant="top" 
-                  src={sopa_mondongo}
+                  src={images.mondongo}
                   alt="sopa de mondongo"
                 />
                 <Card.Body>
@@ -253,7 +237,6 @@ function HomePage() {
                   <Card.Text>
                     C$ 200. 00
                   </Card.Text>
-                  <StarRating rating={4.7} />
                   <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
                 </Card.Body>
               </Card>
@@ -308,5 +291,3 @@ function HomePage() {
     </div>
   );
 }
-
-export default HomePage;

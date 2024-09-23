@@ -3,4 +3,7 @@ from main import models
 
 # Register your models here.
 
-admin.site.register(models.User)
+admin.site.register(models.CustomUser)
+admin.site.register(models.Restaurante)
+admin.site.register(models.NicaFood)
+admin.site.register(models.RestauranteNicaFood)
