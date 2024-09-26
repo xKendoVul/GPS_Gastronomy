@@ -39,7 +39,6 @@ class NicaFood(models.Model):
     name = models.CharField(max_length=40, null=False)
     description = models.TextField(null=False)
     image = models.ImageField(upload_to='images/', null=False)
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
