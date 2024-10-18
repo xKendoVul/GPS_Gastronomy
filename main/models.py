@@ -24,13 +24,22 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.name
 
+#tipo de comida
+class foodtype(models.Model):
+    type = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.type
+
 #Restaurantes
 class Restaurant(models.Model):
     name = models.CharField(max_length=40, null=False)
     description = models.TextField(null=False)
     image = models.ImageField(upload_to='images/', null=False)
-    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)  
-
+    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    
+    #localization
+    #-----------
     def __str__(self):
         return self.name
 
@@ -39,6 +48,7 @@ class NicaFood(models.Model):
     name = models.CharField(max_length=40, null=False)
     description = models.TextField(null=False)
     image = models.ImageField(upload_to='images/', null=False)
+    type = models.ManyToManyField(foodtype)
 
     def __str__(self):
         return self.name
