@@ -1,32 +1,53 @@
-import React from 'react';
-import { Container, Navbar, Nav, Row, Col, Card, Button } from 'react-bootstrap';
-import { Cart, Facebook, Instagram, Twitter, Tiktok, Whatsapp } from 'react-bootstrap-icons';
-import images from '../assets/images_index';
+import React, { useState } from 'react';
+import { Container, Navbar, Nav, Row, Col, Card, Button, Carousel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import StarRating from './StarRating';
+import {Facebook, Instagram, Twitter, Tiktok, Whatsapp, ArrowRight } from 'react-bootstrap-icons';
+import logooficial from './media/logooficial.png'
+import nacatamal1 from './media/nacatamal1.png'
+import vigoron from './media/vigoron.jpg'
+import carne_asada from './media/carne_asada.jpeg'
+import sopa_mondongo from './media/sopa_mondongo.jpg'
+import carusel1 from './media/carusel1.png'
+import carusel2 from './media/carusel2.png'
 
-export function Home() {
+const featuredProducts = [
+  { id: 1, name: 'Nacatamal', price: 60, rating: 4.5, image: nacatamal1 },
+  { id: 2, name: 'Vigorón', price: 150, rating: 4.8, image: vigoron },
+  { id: 3, name: 'Carne Asada', price: 200, rating: 4.2, image: carne_asada },
+  { id: 4, name: 'Sopa de Mondongo', price: 200, rating: 4.7, image: sopa_mondongo }
+];
+
+export default function HomePage() {
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex) => {
+    setIndex(selectedIndex);
+  };
+
   return (
     <div className="d-flex flex-column min-vh-100">
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand as={Link} to="/">
             <img
-              src={images.logo}
-              width="100"
-              height="100"
+              src={logooficial}
+              width="120"
+              height="60"
               className="d-inline-block align-top me-2"
-              alt="GPS Gastronomy Logo"
+              alt="GPS Gastronomy"
             />
-            GPS Gastronomy
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#restaurantes">Restaurantes</Nav.Link>
-              <Nav.Link href="#login">Login</Nav.Link>
-              <Nav.Link href="#carrito">
-                <Cart size={20} /> Mi carrito
-              </Nav.Link>
+              <Nav.Link as={Link} to="/">Home</Nav.Link>
+              <Nav.Link as={Link} to="/events">Eventos</Nav.Link>
+              <Nav.Link as={Link} to="/categories">Categorías</Nav.Link>
+              <Nav.Link as={Link} to="/premium">Premium</Nav.Link>
+              <Nav.Link as={Link} to="/contacts">Contactanos</Nav.Link>
+              <Nav.Link as={Link} to="/login">Iniciar Sesión</Nav.Link>
+            
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -34,218 +55,104 @@ export function Home() {
 
       <main className="flex-grow-1">
         <Container className="py-5">
-          <Row className="mb-5">
-            <Col>
-              <h1 className="text-center mb-4">Bienvenid@s a GPS Gastronomy</h1>
-              <p className="text-center">Descubre los mejores platillos de la gastronomía Nicaraguense</p>
-            </Col>
+          <Carousel activeIndex={index} onSelect={handleSelect} interval={5000} className="mb-5">
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                src={carusel1}
+                alt="First slide"
+              />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                src={carusel2}
+                alt="Second slide"
+              />
+            </Carousel.Item>
+          </Carousel>
+
+          <div className="d-flex justify-content-between align-items-center mb-4 position-relative">
+            <h2 className="mb-0 w-100 text-center">Platillos Destacados</h2>
+            <Button variant="outline" className="d-flex align-items-center position-absolute end-0">
+              Ver Todo <ArrowRight className="ms-2" />
+            </Button>
+          </div>
+          <Row>
+            {featuredProducts.map((product) => (
+              <Col key={product.id} md={3} className="mb-4">
+                <Link to={`/product/${product.id}`} className="text-decoration-none">
+                  <Card className="hover-float">
+                    <Card.Img variant="top" src={product.image} alt={product.name} />
+                    <Card.Body>
+                      <Card.Title>{product.name}</Card.Title>
+                      <Card.Text>
+                        C$ {product.price}.00
+                      </Card.Text>
+                      <StarRating rating={product.rating} />
+                      <Button variant="warning" className="mt-2 w-100">Ver Oferta</Button>
+                    </Card.Body>
+                  </Card>
+                </Link>
+              </Col>
+            ))}
           </Row>
 
-          <h2 className="text-center mb-4">Platillos Destacados</h2>
+          <div className="d-flex justify-content-between align-items-center mb-4 position-relative">
+            <h2 className="mb-0 w-100 text-center">Platillos más consumidos</h2>
+            <Button variant="outline" className="d-flex align-items-center position-absolute end-0">
+              Ver Todo <ArrowRight className="ms-2" />
+            </Button>
+          </div>
           <Row>
-            <Col md={3} className="mb-4">
-              <Card>
-                <Card.Img 
-                  variant="top" 
-                  src={images.nacatamal}
-                  alt="nacatamal"
-                />
-                <Card.Body>
-                  <Card.Title>Nacatamal</Card.Title>
-                  <Card.Text>
-                    C$ 60.00
-                  </Card.Text>
-                  <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={3} className="mb-4">
-              <Card>
-                <Card.Img 
-                  variant="top" 
-                  src={images.bigoron}
-                  alt="vigoron"
-                />
-                <Card.Body>
-                  <Card.Title>Vigoron</Card.Title>
-                  <Card.Text>
-                    C$ 150. 00
-                  </Card.Text>
-                  <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={3} className="mb-4">
-              <Card>
-                <Card.Img 
-                  variant="top" 
-                  src={images.carne_asada}
-                  alt="carne asada"
-                />
-                <Card.Body>
-                  <Card.Title>Carne Asada</Card.Title>
-                  <Card.Text>
-                    C$ 200.00
-                  </Card.Text>
-                  <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={3} className="mb-4">
-              <Card>
-                <Card.Img 
-                  variant="top" 
-                  src={images.mondongo}
-                  alt="sopa de mondongo"
-                />
-                <Card.Body>
-                  <Card.Title>Sopa de Mondongo</Card.Title>
-                  <Card.Text>
-                    C$ 200. 00
-                  </Card.Text>
-                  <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
-                </Card.Body>
-              </Card>
-            </Col>
+            {featuredProducts.map((product) => (
+              <Col key={product.id} md={3} className="mb-4">
+                <Link to={`/product/${product.id}`} className="text-decoration-none">
+                  <Card className="hover-float">
+                    <Card.Img variant="top" src={product.image} alt={product.name} />
+                    <Card.Body>
+                      <Card.Title>{product.name}</Card.Title>
+                      <Card.Text>
+                        C$ {product.price}.00
+                      </Card.Text>
+                      <StarRating rating={product.rating} />
+                      <Button variant="warning" className="mt-2 w-100">Ver Oferta</Button>
+                    </Card.Body>
+                  </Card>
+                </Link>
+              </Col>
+            ))}
           </Row>
-          <h2 className="text-center mb-4">Platillos más Consumidos</h2>
+
+          <div className="d-flex justify-content-between align-items-center mb-4 position-relative">
+            <h2 className="mb-0 w-100 text-center">Platillos Premium</h2>
+            <Button variant="outline" className="d-flex align-items-center position-absolute end-0">
+              Ver Todo <ArrowRight className="ms-2" />
+            </Button>
+          </div>
           <Row>
-            <Col md={3} className="mb-4">
-              <Card>
-                <Card.Img 
-                  variant="top" 
-                  src={images.nacatamal}
-                  alt="nacatamal"
-                />
-                <Card.Body>
-                  <Card.Title>Nacatamal</Card.Title>
-                  <Card.Text>
-                    C$ 60.00
-                  </Card.Text>
-                  <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={3} className="mb-4">
-              <Card>
-                <Card.Img 
-                  variant="top" 
-                  src={images.bigoron}
-                  alt="vigoron"
-                />
-                <Card.Body>
-                  <Card.Title>Vigoron</Card.Title>
-                  <Card.Text>
-                    C$ 150. 00
-                  </Card.Text>
-                  <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={3} className="mb-4">
-              <Card>
-                <Card.Img 
-                  variant="top" 
-                  src={images.carne_asada}
-                  alt="carne asada"
-                />
-                <Card.Body>
-                  <Card.Title>Carne Asada</Card.Title>
-                  <Card.Text>
-                    C$ 200.00
-                  </Card.Text>
-                  <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={3} className="mb-4">
-              <Card>
-                <Card.Img 
-                  variant="top" 
-                  src={images.mondongo}
-                  alt="sopa de mondongo"
-                />
-                <Card.Body>
-                  <Card.Title>Sopa de Mondongo</Card.Title>
-                  <Card.Text>
-                    C$ 200. 00
-                  </Card.Text>
-                  <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-          <h2 className="text-center mb-4">Platillos Premium</h2>
-          <Row>
-            <Col md={3} className="mb-4">
-              <Card>
-                <Card.Img 
-                  variant="top" 
-                  src={images.nacatamal}
-                  alt="nacatamal"
-                />
-                <Card.Body>
-                  <Card.Title>Nacatamal</Card.Title>
-                  <Card.Text>
-                    C$ 60.00
-                  </Card.Text>
-                  <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={3} className="mb-4">
-              <Card>
-                <Card.Img 
-                  variant="top" 
-                  src={images.bigoron}
-                  alt="vigoron"
-                />
-                <Card.Body>
-                  <Card.Title>Vigoron</Card.Title>
-                  <Card.Text>
-                    C$ 150. 00
-                  </Card.Text>
-                  <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={3} className="mb-4">
-              <Card>
-                <Card.Img 
-                  variant="top" 
-                  src={images.carne_asada}
-                  alt="carne asada"
-                />
-                <Card.Body>
-                  <Card.Title>Carne Asada</Card.Title>
-                  <Card.Text>
-                    C$ 200.00
-                  </Card.Text>
-                  <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={3} className="mb-4">
-              <Card>
-                <Card.Img 
-                  variant="top" 
-                  src={images.mondongo}
-                  alt="sopa de mondongo"
-                />
-                <Card.Body>
-                  <Card.Title>Sopa de Mondongo</Card.Title>
-                  <Card.Text>
-                    C$ 200. 00
-                  </Card.Text>
-                  <Button variant="primary" className="mt-2 w-100">Añadir al carrito</Button>
-                </Card.Body>
-              </Card>
-            </Col>
+            {featuredProducts.map((product) => (
+              <Col key={product.id} md={3} className="mb-4">
+                <Link to={`/product/${product.id}`} className="text-decoration-none">
+                  <Card className="hover-float">
+                    <Card.Img variant="top" src={product.image} alt={product.name} />
+                    <Card.Body>
+                      <Card.Title>{product.name}</Card.Title>
+                      <Card.Text>
+                        C$ {product.price}.00
+                      </Card.Text>
+                      <StarRating rating={product.rating} />
+                      <Button variant="warning" className="mt-2 w-100">Ver Oferta</Button>
+                    </Card.Body>
+                  </Card>
+                </Link>
+              </Col>
+            ))}
           </Row>
         </Container>
       </main>
 
-      <footer className="bg-light py-4">
+      <footer className="bg-warning py-4 text-dark">
         <Container>
           <Row>
             <Col md={6}>
@@ -257,37 +164,61 @@ export function Home() {
               <p>Email: gpsgastronomy.com</p>
               <p>Teléfono: (505) 8624-5593</p>
             </Col>
-            <Col>
-            <p className="text-center">Copyright 2024 GPS Gastronomy Inc</p>
-            </Col>
           </Row>
-          <Col md={4}>
-            <h5>Síguenos</h5>
-            <div className="d-flex">
+          <Row>
+            <Col md={4}>
+              <h5>Síguenos</h5>
+              <div className="d-flex">
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="me-3 text-dark">
-                <Facebook size={24} />
-                <span className="visually-hidden">Facebook</span>
+                  <Facebook size={24} />
+                  <span className="visually-hidden">Facebook</span>
                 </a>
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="me-3 text-dark">
-                <Instagram size={24} />
-                <span className="visually-hidden">Instagram</span>
+                  <Instagram size={24} />
+                  <span className="visually-hidden">Instagram</span>
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-dark">
-                <Twitter size={24} />
-                <span className="visually-hidden">Twitter</span>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="me-3 text-dark">
+                  <Twitter size={24} />
+                  <span className="visually-hidden">Twitter</span>
                 </a>
-                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="me-3 mb-2 text-dark">
-                <Tiktok size={24} />
-                <span className="visually-hidden">TikTok</span>
+                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" className="me-3 text-dark">
+                  <Tiktok size={24} />
+                  <span className="visually-hidden">TikTok</span>
                 </a>
-                <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="mb-2 text-dark">
-                <Whatsapp size={24} />
-                <span className="visually-hidden">WhatsApp</span>
+                <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="text-dark">
+                  <Whatsapp size={24} />
+                  <span className="visually-hidden">WhatsApp</span>
                 </a>
-            </div>
+              </div>
             </Col>
+          </Row>
+          <Col>
+            <p className="text-center">© Copyright 2024 GPS Gastronomy Inc</p>
+          </Col>
         </Container>
       </footer>
+      <style>
+        {`
+          @keyframes float {
+            0% {
+              transform: translateY(0px);
+            }
+            50% {
+              transform: translateY(-5px);
+            }
+            100% {
+              transform: translateY(0px);
+            }
+          }
+          .hover-float {
+            transition: box-shadow 0.3s ease-in-out;
+          }
+          .hover-float:hover {
+            animation: float 2s ease-in-out infinite;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+          }
+        `}
+      </style>
     </div>
   );
 }
