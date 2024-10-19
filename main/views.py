@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from .serializer import UserSerializer,foodSerializer
+from .serializer import foodSerializer,UserSerializer
 from .models import NicaFood
 
 from rest_framework.decorators import api_view
