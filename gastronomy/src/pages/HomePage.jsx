@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Container, Navbar, Nav, Row, Col, Card, Button, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import StarRating from './StarRating';
+import StarRating from '../StarRating';
 import {Facebook, Instagram, Twitter, Tiktok, Whatsapp, ArrowRight } from 'react-bootstrap-icons';
-import logooficial from './media/logooficial.png'
-import nacatamal1 from './media/nacatamal1.png'
-import vigoron from './media/vigoron.jpg'
-import carne_asada from './media/carne_asada.jpeg'
-import sopa_mondongo from './media/sopa_mondongo.jpg'
-import carusel1 from './media/carusel1.png'
-import carusel2 from './media/carusel2.png'
+import logooficial from '../media/logooficial.png'
+import nacatamal1 from '../media/nacatamal1.png'
+import vigoron from '../media/vigoron.jpg'
+import carne_asada from '../media/carne_asada.jpeg'
+import sopa_mondongo from '../media/sopa_mondongo.jpg'
+import carusel1 from '../media/carusel1.png'
+import carusel2 from '../media/carusel2.png'
 
 const featuredProducts = [
   { id: 1, name: 'Nacatamal', price: 60, rating: 4.5, image: nacatamal1 },
@@ -18,7 +18,7 @@ const featuredProducts = [
   { id: 4, name: 'Sopa de Mondongo', price: 200, rating: 4.7, image: sopa_mondongo }
 ];
 
-export default function HomePage() {
+export function HomePage() {
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex) => {

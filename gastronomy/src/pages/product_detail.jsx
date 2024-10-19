@@ -14,11 +14,11 @@ import { Vector as VectorLayer } from 'ol/layer';
 import { Vector as VectorSource } from 'ol/source';
 import { Style, Icon, Stroke, Text, Fill } from 'ol/style';
 import LineString from 'ol/geom/LineString';
-import nacatamal1 from './media/nacatamal1.png'
-import vigoron from './media/vigoron.jpg'
-import carne_asada from './media/carne_asada.jpeg'
-import sopa_mondongo from './media/sopa_mondongo.jpg'
-import iconmap from './media/iconmap.png'
+import nacatamal1 from '../media/nacatamal1.png'
+import vigoron from '../media/vigoron.jpg'
+import carne_asada from '../media/carne_asada.jpeg'
+import sopa_mondongo from '../media/sopa_mondongo.jpg'
+import iconmap from '../media/iconmap.png'
 
 const product = {
   id: 1,
@@ -39,7 +39,7 @@ const mapContainerStyle = {
   height: '600px'
 };
 
-function ProductDetailPage() {
+export function ProductDetailPage() {
   const [userLocation, setUserLocation] = useState(null);
   const [nearbyRestaurants, setNearbyRestaurants] = useState([]);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
@@ -291,5 +291,3 @@ function ProductDetailPage() {
     </Container>
   );
 }
-
-export default ProductDetailPage;

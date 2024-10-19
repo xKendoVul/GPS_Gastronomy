@@ -3,7 +3,7 @@ import { Container, Form, Button, Alert, Card, Row, Col, InputGroup } from 'reac
 import { useNavigate, Link } from 'react-router-dom';
 import { Envelope, Lock, Person, EyeFill, EyeSlashFill, Facebook, Google, Twitter } from 'react-bootstrap-icons';
 
-function Register() {
+export function Register() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -174,5 +174,3 @@ function Register() {
     </Container>
   );
 }
-
-export default Register;

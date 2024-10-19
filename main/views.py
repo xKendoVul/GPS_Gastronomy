@@ -52,6 +52,14 @@ def profile(request):
     
     return Response("estas logeado como {}".format(request.user.username),status=status.HTTP_200_OK)
 
-class NicaFoodView(viewsets.ModelViewSet):
-    serializer_class = foodSerializer
-    queryset = NicaFood.objects.all()
+@api_view(['GET'])
+def food_list(request):
+    foods = NicaFood.objects.all()
+    serializer = foodSerializer(foods, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def food_detail(request, pk):
+    food = NicaFood.objects.get(id=pk)
+    serializer = foodSerializer(food, many=False)
+    return Response(serializer.data)

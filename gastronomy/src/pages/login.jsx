@@ -3,7 +3,7 @@ import { Container, Form, Button, Alert, Card, Row, Col, InputGroup } from 'reac
 import { useNavigate, Link } from 'react-router-dom';
 import { Facebook, Google, Twitter, Envelope, Lock, EyeFill, EyeSlashFill } from 'react-bootstrap-icons';
 
-function Login() {
+export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -107,4 +107,3 @@ function Login() {
   );
 }
 
-export default Login;

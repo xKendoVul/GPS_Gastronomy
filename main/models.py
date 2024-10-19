@@ -49,6 +49,7 @@ class NicaFood(models.Model):
     description = models.TextField(null=False)
     image = models.ImageField(upload_to='images/', null=False)
     type = models.ManyToManyField(foodtype)
+    price = models.FloatField(null=False)
 
     def __str__(self):
         return self.name
